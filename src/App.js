@@ -1,16 +1,22 @@
 import React from 'react';
 import './App.css';
-import {connect} from 'react-redux'
-import {fetchMaterials} from './actions/materialsActions'
-import MaterialsContainer from './containers/MaterialsContainer';
-import RecycleCentersContainer from './containers/RecycleCentersContainer'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import NavBar from './components/NavBar';
+import Home from './components/Home';
+import RecycleCenterFinderContainer from './containers/RecycleCenterFinderContainer'
+import MaterialsList from './components/materials/MaterialsList';
 
 function App() {
   return (
-    <div className="App">
-      <MaterialsContainer />
-      <RecycleCentersContainer />
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <Route exact path='/' component={ Home } />
+        <Route exact path='/recycle-center-finder' component={ RecycleCenterFinderContainer } />
+        <Route exact path='/materials' component={ MaterialsList } />
+      </div>
+    </Router>
   );
 }
 
