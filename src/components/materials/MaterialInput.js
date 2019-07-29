@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-// import Select from 'react-virtualized-select';
 import Select from 'react-select';
-import 'react-virtualized-select/styles.css'
-// import VirtualizedSelect from 'react-virtualized-select'
 import { connect } from 'react-redux';
+import { Form, Container } from 'semantic-ui-react'
 
-import MaterialsList from './MaterialsList'
-import MaterialCard from './MaterialCard'
 import { postMaterial } from '../../actions/materialsActions'
 
 
@@ -50,6 +46,7 @@ export class MaterialInput extends Component {
         id: value.value
       }
     })
+    this.renderMaterialsSearch()
   }
 
   handleSubmit = (event) => {
@@ -60,23 +57,24 @@ export class MaterialInput extends Component {
 
   render() {
     return (
-      <div>
+      <Container class="ui-form">
         <form onSubmit={this.handleSubmit}>
-          <p> Search for Recycling Centers near:</p>
+          <h3> Search for Recycling Centers near:</h3>
             <label>
               <input type="text" placeholder="enter ZIP code" onChange={this.handleLocationChange}/>
             </label>
             <br /><br />
             {this.renderMaterialsSearch()}
+            <input type="submit" value="Search Area" />
             <br />
-              <input type="submit" value="Search Area" />
-               {/*<MaterialsList materials={this.props.materials}/>*/}
-        </form>
-          {this.renderMaterialDescription()}
-          <MaterialCard material={this.props} />
-      </div>
+        </form><br />
+      </Container>
       )
    }
+}
+
+const mapStateToProps = state => {
+   return {recycleCenters: state.recycleCenters.recycleCenters}
 }
 
 export default connect(null, {postMaterial})(MaterialInput)

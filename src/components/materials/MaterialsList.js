@@ -1,27 +1,53 @@
 import React, { Component } from 'react';
-import MaterialCard from './MaterialCard'
+import { connect } from 'react-redux';
+import { Card, Container } from 'semantic-ui-react'
+
+import MaterialCard from './MaterialCard';
+import { fetchMaterials } from '../../actions/materialsActions';
 
 class MaterialsList extends Component {
 
-  renderMaterials = () => {
-    return this.props.materials.map(material =>
-      <MaterialCard material={material} key={material.id} />
-    )
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    document.querySelector('div.materials-list').innerHTML = ""
+  componentDidMount() {
+    return this.props.fetchMaterials()
   }
 
   render() {
+  //   return(
+  //     <Container className="ui container">
+  //     <br />
+  //     <br />
+  //       <div className="four wide column">
+  //         <Card.Group itemsPerRow={4}>
+  //             {this.props.materials.map(material =>
+  //               <MaterialCard key={material.id} material={material} />
+  //             )}
+  //         </Card.Group>
+  //       </div>
+  //     </Container>
+  //   );
+  // }
     return(
-      <div className="materials-list">
-        {this.renderMaterials()}
-      </div>
-    );
-  }
+      <Container>
+      <br />
+      <br />
+      <div id="material_cards" className="ui four stackable cards">
+        <Card.Group >
+          {this.props.materials.map(material =>
+            <MaterialCard key={material.id} material={material} />
+          )}
+        </Card.Group>
+        </div>
+      </Container>
+    )
 };
+}
 
+const mapStateToProps = state => {
+  return {materials: state.materials.materials}
+}
 
+MaterialsList.defaultProps = {
+  materials: []
+}
 
-export default MaterialsList
+export default connect(mapStateToProps, {fetchMaterials})(MaterialsList)
