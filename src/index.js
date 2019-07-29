@@ -4,6 +4,7 @@ import App from './App'
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
+// import './semantic/dist/semantic.min.css';
 
 import { Provider } from 'react-redux';
 
