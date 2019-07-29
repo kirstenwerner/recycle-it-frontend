@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-// import {fetchRecycleCenters} from '../actions/recycleCentersActions'
-import RecycleCentersList from '../components/recycleCenters/RecycleCentersList'
+import RecycleCentersMapContainer from './RecycleCentersMapContainer'
 
 class RecycleCentersContainer extends Component {
 
    render() {
       return (
          <div>
-            <RecycleCentersList recycleCenters={this.props.recycleCenters} />
+            <RecycleCentersMapContainer recycleCenters={this.props.recycleCenters}/>
          </div>
       )
    }

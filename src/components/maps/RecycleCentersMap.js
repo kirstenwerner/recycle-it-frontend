@@ -1,21 +1,63 @@
 import React from "react";
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
-import RecycleCentersMarker from "./RecycleCentersMarker";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { useState, useEffect } from "react";
 
-const RecycleCentersMap = withScriptjs(withGoogleMap((props) =>{
+const Map = withScriptjs(withGoogleMap((props) =>{
 
-  const markers = props.recycleCenters.map( recycleCenter => <RecycleCentersMarker
-                    key={recycleCenter.uid}
-                    recycleCenter={recycleCenter}
-                    location={{lat: recycleCenter.closestPractice.lat, lng: recycleCenter.closestPractice.lon}}
-                  />);
+  const [selectedCenter, setSelectedCenter] = useState(null);
+
+  useEffect(() => {
+    const listener = e => {
+      if (e.key === "Escape") {
+        setSelectedCenter(null);
+      }
+    };
+    window.addEventListener("keydown", listener);
+
+    return () => {
+      window.removeEventListener("keydown", listener);
+    };
+  }, []);
+
+  const recycleCenters = props.recycleCenters
 
   return (
-    <GoogleMap defaultZoom={14} center={ { lat:  42.3601, lng: -71.0589 } }>
-      {markers}
-    </GoogleMap>
+      <GoogleMap defaultZoom={10} center={ { lat:  47.6062, lng: -122.3321 } }>
+        {recycleCenters.map(center => (
+          <Marker
+            key={center.id}
+            position={{
+              lat: center.latitude,
+              lng: center.longitude
+            }}
+            onClick={() => {
+              setSelectedCenter(center);
+            }}
+          />
+        ))}
+
+        {selectedCenter && (
+          <InfoWindow
+            onCloseClick={() => {
+              setSelectedCenter(null);
+            }}
+            position={{
+              lat: selectedCenter.latitude,
+              lng: selectedCenter.longitude
+            }}
+          >
+            <div>
+              <h3>{selectedCenter.name}</h3>
+              <h5>{selectedCenter.address}, {selectedCenter.city}, {selectedCenter.state} {selectedCenter.zip_code}</h5>
+              <h5>{selectedCenter.phone_number}</h5>
+              <p>Hours of operation: {selectedCenter.hours}</p>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
     );
   }
 ))
 
-export default RecycleCentersMap;
+
+export default Map;
