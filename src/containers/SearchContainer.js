@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-// import { DropdownButton, Dropdown } from 'react-bootstrap';
+import { connect } from 'react-redux'
 
 import MaterialsList from '../components/materials/MaterialsList'
 import MaterialInput from '../components/materials/MaterialInput'
 import { fetchMaterials } from '../actions/materialsActions'
 
-
-import { connect } from 'react-redux'
-
-class MaterialsContainer extends Component {
+class SearchContainer extends Component {
 
   componentDidMount() {
     return this.props.fetchMaterials()
@@ -19,7 +15,6 @@ class MaterialsContainer extends Component {
     return (
       <div>
         <MaterialInput materials={this.props.materials} />
-        {/* <MaterialsList materials={this.props.materials} /> */}
       </div>
     )
   }
@@ -29,8 +24,9 @@ const mapStateToProps = state => {
   return {materials: state.materials.materials}
 }
 
-MaterialsContainer.defaultProps = {
+SearchContainer.defaultProps = {
   materials: []
 }
 
-export default connect(mapStateToProps, {fetchMaterials})(MaterialsContainer)
+export default connect(mapStateToProps, {fetchMaterials})(SearchContainer)
+// export default SearchContainer
