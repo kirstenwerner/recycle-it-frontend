@@ -2,7 +2,15 @@
   text-align: center;
 }
 
-.App-logo {
+h2 {
+  text-align:center;
+}
+
+h4 {
+  text-align:center;
+}
+
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
@@ -21,13 +29,42 @@
 
 .App-link {
   color: #61dafb;
+} */
+
+.NavBar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
-@keyframes App-logo-spin {
+.center {
+  text-align:center
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ui.container {
+  align:center;
+  margin:0px, 20px;
+}
+
+#material_cards .ui.cards {
+  align:center;
+  margin:0px, 0px
+}
+
+.ui.card>content.extra,
+.ui.card>.card>.content.extra {
+  background-color: 243,244,245;
+}
+
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
-  }
-}
+  } */
+/* } */
