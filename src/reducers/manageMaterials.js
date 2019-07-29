@@ -16,7 +16,7 @@ export default function materialsReducer(
       }
       newMaterials.push(material)
       })
-      return {...state, loading: false, materials: state.materials.concat(newMaterials)};
+      return {...state, loading: false, materials: newMaterials};
 
     case "POST_MATERIALS":
       return {state}
