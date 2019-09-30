@@ -8,26 +8,15 @@ import { fetchMaterials } from '../../actions/materialsActions';
 class MaterialsList extends Component {
 
   componentDidMount() {
-    return this.props.fetchMaterials()
+    console.log("a")
+    this.props.fetchMaterials()
+    console.log("b")
+    //a, c, d, (e), b
   }
 
   render() {
-  //   return(
-  //     <Container className="ui container">
-  //     <br />
-  //     <br />
-  //       <div className="four wide column">
-  //         <Card.Group itemsPerRow={4}>
-  //             {this.props.materials.map(material =>
-  //               <MaterialCard key={material.id} material={material} />
-  //             )}
-  //         </Card.Group>
-  //       </div>
-  //     </Container>
-  //   );
-  // }
     return(
-      <Container>
+      <Container className="ui four column doubling stackable grid container">
       <br />
       <br />
       <div id="material_cards" className="ui four stackable cards">

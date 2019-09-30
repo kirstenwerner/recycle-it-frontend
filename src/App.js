@@ -7,6 +7,8 @@ import Home from './components/Home';
 import RecycleCenterFinderContainer from './containers/RecycleCenterFinderContainer'
 import MaterialsList from './components/materials/MaterialsList';
 
+console.log(process.env.REACT_APP_GOOGLE_API_KEY)
+
 function App() {
   return (
     <Router>

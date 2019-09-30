@@ -8,9 +8,9 @@ const NavBar = () => {
     <div>
         <br/>
         <div className='navbar' className='center'>
-          <NavLink to='/' exact><Button size='large' color='purple'>Home</Button></NavLink>
-          <NavLink to='/recycle-center-finder' exact><Button size='massive' color='green'>Recycle It!</Button></NavLink>
-          <NavLink to='/materials' exact><Button size='large' color='red'>Materials</Button></NavLink>
+          <NavLink to='/' exact><Button size='medium' color='olive'>Home</Button></NavLink>
+          <NavLink to='/recycle-center-finder' exact><Button size='big' color='green'>Recycle It!</Button></NavLink>
+          <NavLink to='/materials' exact><Button size='medium' color='teal'>Materials</Button></NavLink>
           <br/>
           <br/>
         </div>

@@ -1,4 +1,5 @@
 export function fetchMaterials() {
+  console.log("c")
   return dispatch => {
     dispatch({ type: "LOADING_MATERIALS" })
     const url = "http://localhost:3000/materials"
@@ -9,8 +10,12 @@ export function fetchMaterials() {
       },
     })
       .then(resp => resp.json())
-      .then(json => dispatch({ type: "FETCH_MATERIALS", materials: json}))
+      .then(json => {
+        console.log("d")
+        dispatch({ type: "FETCH_MATERIALS", materials: json})
+      })
   };
+  console.log("e")
 }
 
 export function postMaterial(state) {

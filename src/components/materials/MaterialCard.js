@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import MaterialsList from './MaterialsList'
 
 class MaterialCard extends Component {
@@ -7,8 +7,16 @@ class MaterialCard extends Component {
     super(props)
 
     this.state = {
-      front: props
+      front: props,
+      count: 0
     }
+  }
+
+  handleClick = () => {
+    this.setState({
+      count: this.state.count+1
+    })
+    console.log(this.state)
   }
 
   render() {
@@ -19,13 +27,18 @@ class MaterialCard extends Component {
 
     return (
       <div>
-        <Card className="ui link card">
-          <Card.Content
-            header={material.name}
-            description={material.description}
-          >
-          </Card.Content>
-        </Card><br />
+        <div className="ui card">
+          <div className="card">
+            <div className="content">
+              <div className="header">{material.name}</div>
+              <div className="description">{material.description}</div>
+              <div className="counter">Likes: {this.state.count}</div>
+            </div>
+            <div className="ui bottom attached button" onClick={this.handleClick}>
+              Like
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
