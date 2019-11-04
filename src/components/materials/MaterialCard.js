@@ -8,15 +8,7 @@ class MaterialCard extends Component {
 
     this.state = {
       front: props,
-      count: 0
     }
-  }
-
-  handleClick = () => {
-    this.setState({
-      count: this.state.count+1
-    })
-    console.log(this.state)
   }
 
   render() {
@@ -30,15 +22,11 @@ class MaterialCard extends Component {
         <div className="ui card">
           <div className="card">
             <div className="content">
-              <div className="header">{material.name}</div>
+              <div className="header"><b>{material.name}</b></div>
               <div className="description">{material.description}</div>
-              <div className="counter">Likes: {this.state.count}</div>
-            </div>
-            <div className="ui bottom attached button" onClick={this.handleClick}>
-              Like
             </div>
           </div>
-        </div>
+        </div><br/>
       </div>
     )
   }
