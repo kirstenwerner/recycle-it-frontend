@@ -1,7 +1,7 @@
 export default function fetchRecycleCenters(state) {
    return dispatch => {
       dispatch({ type: "LOADING_RECYCLE_CENTERS" })
-      const url = "http://localhost:3000/recycle_centers"
+      const url = "https://recycle-it-api.herokuapp.com/recycle_centers"
       return fetch(url, {method: "POST", params: state})
          .then(resp => {
             console.log(resp)
