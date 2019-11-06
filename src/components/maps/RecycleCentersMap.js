@@ -23,9 +23,7 @@ const Map = withScriptjs(withGoogleMap((props) =>{
 
   return (
       <GoogleMap defaultZoom={4.5} center={ { lat:  39.6693, lng: -98.3476 } }>
-
         
-
         {recycleCenters.map(center => (
           <Marker
             key={center.id}

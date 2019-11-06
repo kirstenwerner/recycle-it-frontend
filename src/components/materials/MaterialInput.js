@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Select from 'react-select';
 import { connect } from 'react-redux';
 import { Form, Container } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 import { postMaterial } from '../../actions/materialsActions'
 
@@ -32,7 +33,6 @@ export class MaterialInput extends Component {
     )
   }
 
-
   handleLocationChange = (event) => {
     this.setState({
       location: event.target.value,
@@ -53,6 +53,11 @@ export class MaterialInput extends Component {
     event.preventDefault()
     console.log("handleSubmit", this.state)
     this.props.postMaterial(this.state)
+    debugger
+  }
+
+  refreshPage = () => {
+    window.location.reload(false);
   }
 
   render() {
@@ -68,6 +73,7 @@ export class MaterialInput extends Component {
             <input type="submit" value="Search Area" />
             <br />
         </form><br />
+        <center><Button size='medium' color='yellow' onClick={this.refreshPage}>New Search</Button></center>
       </Container>
       )
    }
