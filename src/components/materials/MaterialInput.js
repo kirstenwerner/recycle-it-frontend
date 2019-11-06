@@ -49,11 +49,22 @@ export class MaterialInput extends Component {
     this.renderMaterialsSearch()
   }
 
+  canBeSubmitted() {
+    const { location, material } = this.state;
+    return (
+      location.length == 5 &&
+      material.name.length > 0
+    );
+  }  
+
   handleSubmit = (event) => {
-    event.preventDefault()
+    if (!this.canBeSubmitted()) {
+      event.preventDefault();
+      return;
+    }
+    event.preventDefault();
     console.log("handleSubmit", this.state)
     this.props.postMaterial(this.state)
-    debugger
   }
 
   refreshPage = () => {
@@ -61,6 +72,8 @@ export class MaterialInput extends Component {
   }
 
   render() {
+    const isEnabled = this.canBeSubmitted();
+    
     return (
       <Container class="ui-form">
         <form onSubmit={this.handleSubmit}>
@@ -70,7 +83,7 @@ export class MaterialInput extends Component {
             </label>
             <br /><br />
             {this.renderMaterialsSearch()}
-            <input type="submit" value="Search Area" />
+            <Button size='medium' color='green' onclick={this.handleSubmit} disabled={!isEnabled}>Search Area</Button>
             <br />
         </form><br />
         <center><Button size='medium' color='yellow' onClick={this.refreshPage}>New Search</Button></center>
