@@ -9,7 +9,7 @@ const Home = () => {
     <br />
       <div>
         <h2>Welcome to <strong>Recycle It!</strong></h2>
-        <p>Recycle It! is designed to make finding where to dispose of your material waste somewhere besides the landfills.</p>
+        <p>Recycle It! is designed to help you find where you can dispose of your material waste, somewhere besides the landfills.</p>
         <p>Simply click on the <strong>Recycle It!</strong> button above, enter your zip code and select the material you'd like to dispose of
           from the dropdown search bar, and all of the locations in your area that accept your selected material will show up on the map!
         </p>
