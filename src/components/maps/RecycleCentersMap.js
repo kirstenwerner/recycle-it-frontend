@@ -21,44 +21,50 @@ const Map = withScriptjs(withGoogleMap((props) =>{
 
   const recycleCenters = props.recycleCenters
 
-  return (
-      <GoogleMap defaultZoom={4.5} center={ { lat:  39.6693, lng: -98.3476 } }>
-        
-        {recycleCenters.map(center => (
-          <Marker
-            key={center.id}
-            position={{
-              lat: center.latitude,
-              lng: center.longitude
-            }}
-            onClick={() => {
-              setSelectedCenter(center);
-            }}
-          />
-        ))}
+  if (recycleCenters.length > 0) {
+    return (
+        <GoogleMap zoom={10} center={ { lat:  recycleCenters[0].latitude, lng: recycleCenters[0].longitude } }>
 
-        {selectedCenter && (
-          <InfoWindow
-            onCloseClick={() => {
-              setSelectedCenter(null);
-            }}
-            position={{
-              lat: selectedCenter.latitude,
-              lng: selectedCenter.longitude
-            }}
-          >
-            <div>
-              <h3>{selectedCenter.name}</h3>
-              <h5>{selectedCenter.address}, {selectedCenter.city}, {selectedCenter.state} {selectedCenter.zip_code}</h5>
-              <h5>{selectedCenter.phone_number}</h5>
-              <p>Hours of operation: {selectedCenter.hours}</p>
-            </div>
-          </InfoWindow>
-        )}
-      </GoogleMap>
-    );
+          {recycleCenters.map(center => (
+            <Marker
+              key={center.id}
+              position={{
+                lat: center.latitude,
+                lng: center.longitude
+              }}
+              onClick={() => {
+                setSelectedCenter(center);
+              }}
+            />
+          ))}
+
+          {selectedCenter && (
+            <InfoWindow
+              onCloseClick={() => {
+                setSelectedCenter(null);
+              }}
+              position={{
+                lat: selectedCenter.latitude,
+                lng: selectedCenter.longitude
+              }}
+            >
+              <div>
+                <h3>{selectedCenter.name}</h3>
+                <h5>{selectedCenter.address}, {selectedCenter.city}, {selectedCenter.state} {selectedCenter.zip_code}</h5>
+                <h5>{selectedCenter.phone_number}</h5>
+                <p>Hours of operation: {selectedCenter.hours}</p>
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
+      );
+  } else {
+    return (
+      <GoogleMap zoom={4.5} center={ { lat:  39.6693, lng: -98.3476 } } />
+    )
   }
-))
+
+}))
 
 
 export default Map;
