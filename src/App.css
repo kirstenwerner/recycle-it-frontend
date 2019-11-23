@@ -7,11 +7,11 @@
 }
 
 h2 {
-  text-align:center;
+  text-align: center;
 }
 
 h4 {
-  text-align:center;
+  text-align: center;
 }
 
 /* .App-logo {
@@ -42,7 +42,7 @@ h4 {
 }
 
 .center {
-  text-align:center
+  text-align: center;
 }
 
 p {
@@ -50,18 +50,18 @@ p {
 }
 
 .ui.container {
-  align:center;
-  margin:0px, 20px;
+  align: center;
+  margin: 0px, 20px;
 }
 
 #material_cards .ui.cards {
-  align:center;
-  margin:0px, 0px
+  align: center;
+  margin: 0px, 0px;
 }
 
-.ui.card>content.extra,
-.ui.card>.card>.content.extra {
-  background-color: 243,244,245;
+.ui.card > content.extra,
+.ui.card > .card > .content.extra {
+  background-color: 243, 244, 245;
 }
 
 /* @keyframes App-logo-spin {

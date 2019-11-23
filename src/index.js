@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import App from './App'
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers/rootReducer';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers/rootReducer";
 // import './semantic/dist/semantic.min.css';
 
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

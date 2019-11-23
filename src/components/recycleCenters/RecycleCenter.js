@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class RecycleCenter extends Component {
   render() {
@@ -6,8 +6,8 @@ class RecycleCenter extends Component {
       <div>
         <h4>{this.props.recycleCenter.name}</h4>
       </div>
-      )
-   }
+    );
+  }
 }
 
-export default RecycleCenter
+export default RecycleCenter;
